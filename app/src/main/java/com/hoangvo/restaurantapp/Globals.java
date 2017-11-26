@@ -1,15 +1,7 @@
 package com.hoangvo.restaurantapp;
 
-public class Globals {
-    private static Globals instance;
-    public Restaurant res;
+import android.app.Application;
 
-    private Globals(){}
-
-    public static synchronized Globals getInstance(){
-        if(instance == null){
-            instance = new Globals();
-        }
-        return instance;
-    }
+public class Globals extends Application {
+    public Restaurant[] res = new Restaurant[10];
 }

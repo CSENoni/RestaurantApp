@@ -3,16 +3,20 @@ package com.hoangvo.restaurantapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Globals g = Globals.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Globals g = (Globals)getApplication();
+        for (int i = 0; i < g.res.length; i++){
+            g.res[i] = new Restaurant();
+        }
 
         final Button guestLogin = (Button) findViewById(R.id.guestLogin);
         final Button newUser = (Button) findViewById(R.id.newUser);

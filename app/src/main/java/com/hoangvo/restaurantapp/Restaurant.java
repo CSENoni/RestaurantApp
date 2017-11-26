@@ -25,4 +25,5 @@ public class Restaurant {
         low = 0;
         high = 100;
     }
+
 }

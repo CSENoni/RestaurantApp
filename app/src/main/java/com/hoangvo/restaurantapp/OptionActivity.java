@@ -10,12 +10,12 @@ import android.widget.Button;
 
 public class OptionActivity extends AppCompatActivity {
 
-    Globals g = Globals.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
 
+        Globals g = (Globals)getApplication();
         Button random = (Button) findViewById(R.id.btRandom);
 
         random.setOnClickListener(new View.OnClickListener(){
