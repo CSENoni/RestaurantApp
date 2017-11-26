@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Globals g = (Globals)getApplication();
         for (int i = 0; i < g.res.length; i++){
             g.res[i] = new Restaurant();
+            g.res[i].res_name = "TEST";
         }
 
         final Button guestLogin = (Button) findViewById(R.id.guestLogin);

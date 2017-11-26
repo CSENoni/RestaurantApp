@@ -16,7 +16,18 @@ public class OptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_option);
 
         Globals g = (Globals)getApplication();
+
+        Button mylist = (Button) findViewById(R.id.btView);
         Button random = (Button) findViewById(R.id.btRandom);
+
+
+        mylist.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent listIntent = new Intent(OptionActivity.this, ListActivity.class);
+                OptionActivity.this.startActivity(listIntent);
+            }
+        });
 
         random.setOnClickListener(new View.OnClickListener(){
             @Override
