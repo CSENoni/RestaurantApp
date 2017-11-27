@@ -63,6 +63,7 @@ public class OptionActivity extends AppCompatActivity {
 
         Button mylist = (Button) findViewById(R.id.btView);
         Button random = (Button) findViewById(R.id.btRandom);
+        Button group = (Button) findViewById(R.id.btGroup);
 
 
         mylist.setOnClickListener(new View.OnClickListener(){
@@ -78,6 +79,14 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent randomIntent = new Intent(OptionActivity.this, RandomActivity.class);
                 OptionActivity.this.startActivity(randomIntent);
+            }
+        });
+
+        group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent groupIntent = new Intent( OptionActivity.this, GroupActivity.class);
+                OptionActivity.this.startActivity(groupIntent);
             }
         });
     }
