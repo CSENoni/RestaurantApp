@@ -29,6 +29,10 @@ public class InfoActivity extends AppCompatActivity {
                 Intent optionIntent = new Intent(InfoActivity.this, OptionActivity.class);
                 InfoActivity.this.startActivity(optionIntent);
                 return true;
+            case R.id.mylist:
+                Intent listIntent = new Intent(InfoActivity.this, ListActivity.class);
+                InfoActivity.this.startActivity(listIntent);
+                return true;
             case R.id.random:
                 Intent randomIntent = new Intent(InfoActivity.this, RandomActivity.class);
                 InfoActivity.this.startActivity(randomIntent);

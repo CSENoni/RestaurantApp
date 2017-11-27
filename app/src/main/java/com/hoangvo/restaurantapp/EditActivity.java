@@ -7,15 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
-public class ListActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.listmenu, menu);
@@ -27,40 +24,40 @@ public class ListActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.edit:
-                Intent editIntent = new Intent(ListActivity.this, EditActivity.class);
-                ListActivity.this.startActivity(editIntent);
+                Intent editIntent = new Intent(EditActivity.this, EditActivity.class);
+                EditActivity.this.startActivity(editIntent);
                 return true;
             case R.id.search:
-                Intent searchIntent = new Intent(ListActivity.this, SearchActivity.class);
-                ListActivity.this.startActivity(searchIntent);
+                Intent searchIntent = new Intent(EditActivity.this, SearchActivity.class);
+                EditActivity.this.startActivity(searchIntent);
                 return true;
             case R.id.logout:
-                Intent logoutIntent = new Intent(ListActivity.this, MainActivity.class);
-                ListActivity.this.startActivity(logoutIntent);
+                Intent logoutIntent = new Intent(EditActivity.this, MainActivity.class);
+                EditActivity.this.startActivity(logoutIntent);
                 return true;
             case R.id.home:
-                Intent optionIntent = new Intent(ListActivity.this, OptionActivity.class);
-                ListActivity.this.startActivity(optionIntent);
+                Intent optionIntent = new Intent(EditActivity.this, OptionActivity.class);
+                EditActivity.this.startActivity(optionIntent);
                 return true;
             case R.id.mylist:
-                Intent listIntent = new Intent(ListActivity.this, ListActivity.class);
-                ListActivity.this.startActivity(listIntent);
+                Intent listIntent = new Intent(EditActivity.this, EditActivity.class);
+                EditActivity.this.startActivity(listIntent);
                 return true;
             case R.id.random:
-                Intent randomIntent = new Intent(ListActivity.this, RandomActivity.class);
-                ListActivity.this.startActivity(randomIntent);
+                Intent randomIntent = new Intent(EditActivity.this, RandomActivity.class);
+                EditActivity.this.startActivity(randomIntent);
                 return true;
             case R.id.nearby:
-                Intent nearbyIntent = new Intent(ListActivity.this, NearbyActivity.class);
-                ListActivity.this.startActivity(nearbyIntent);
+                Intent nearbyIntent = new Intent(EditActivity.this, NearbyActivity.class);
+                EditActivity.this.startActivity(nearbyIntent);
                 return true;
             case R.id.groups:
-                 Intent groupsIntent = new Intent(ListActivity.this, GroupActivity.class);
-                 ListActivity.this.startActivity(groupsIntent);
+                 Intent groupsIntent = new Intent(EditActivity.this, GroupActivity.class);
+                 EditActivity.this.startActivity(groupsIntent);
                 return true;
             case R.id.help:
-                 Intent helpIntent = new Intent(ListActivity.this, HelpActivity.class);
-                 ListActivity.this.startActivity(helpIntent);
+                 Intent helpIntent = new Intent(EditActivity.this, HelpActivity.class);
+                 EditActivity.this.startActivity(helpIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -84,9 +81,9 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                Intent infoIntent = new Intent(ListActivity.this, InfoActivity.class);
+                Intent infoIntent = new Intent(EditActivity.this, InfoActivity.class);
                 infoIntent.putExtra("pos", id);
-                ListActivity.this.startActivity(infoIntent);
+                EditActivity.this.startActivity(infoIntent);
             }
         });
     }
