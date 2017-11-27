@@ -15,12 +15,21 @@ public class OptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_option);
 
         Button random = (Button) findViewById(R.id.btRandom);
+        Button group = (Button) findViewById(R.id.btGroup);
 
         random.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent randomIntent = new Intent(OptionActivity.this, RandomActivity.class);
                 OptionActivity.this.startActivity(randomIntent);
+            }
+        });
+
+        group.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent groupIntent = new Intent( OptionActivity.this, GroupActivity.class);
+                OptionActivity.this.startActivity(groupIntent);
             }
         });
     }
