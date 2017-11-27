@@ -61,7 +61,6 @@ public class OptionActivity extends AppCompatActivity {
         Globals g = (Globals)getApplication();
 
         Button mylist = (Button) findViewById(R.id.btView);
-        Button random = (Button) findViewById(R.id.btRandom);
         Button group = (Button) findViewById(R.id.btGroup);
         Button nearBy = (Button) findViewById(R.id.btNearby);
 
@@ -78,14 +77,6 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent listIntent = new Intent(OptionActivity.this, ListActivity.class);
                 OptionActivity.this.startActivity(listIntent);
-            }
-        });
-
-        random.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent randomIntent = new Intent(OptionActivity.this, RandomActivity.class);
-                OptionActivity.this.startActivity(randomIntent);
             }
         });
 
