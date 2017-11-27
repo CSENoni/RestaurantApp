@@ -19,11 +19,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".OptionActivity" />
-        <activity android:name=".RandomActivity" />
-        <activity android:name=".GroupActivity" />
-        <activity android:name=".Group1Activity" />
-        <activity android:name=".Group2Activity" />
-        <activity android:name=".Group3Activity"></activity>
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".RandomActivity"></activity>
     </application>
 
 </manifest>
