@@ -37,18 +37,18 @@ public class InfoActivity extends AppCompatActivity {
                 Intent randomIntent = new Intent(InfoActivity.this, RandomActivity.class);
                 InfoActivity.this.startActivity(randomIntent);
                 return true;
-            //case R.id.nearby:
-            //    Intent nearbyIntent = new Intent(InfoActivity.this, NearbyActivity.class);
-            //    InfoActivity.this.startActivity(nearbyIntent);
-            //    return true;
+            case R.id.nearby:
+                Intent nearbyIntent = new Intent(InfoActivity.this, NearbyActivity.class);
+                InfoActivity.this.startActivity(nearbyIntent);
+                return true;
             case R.id.groups:
                 Intent groupsIntent = new Intent(InfoActivity.this, GroupActivity.class);
                 InfoActivity.this.startActivity(groupsIntent);
                 return true;
-            //case R.id.help:
-            //    Intent helpIntent = new Intent(InfoActivity.this, HelpActivity.class);
-            //    InfoActivity.this.startActivity(helpIntent);
-            //    return true;
+            case R.id.help:
+                Intent helpIntent = new Intent(InfoActivity.this, HelpActivity.class);
+                InfoActivity.this.startActivity(helpIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
