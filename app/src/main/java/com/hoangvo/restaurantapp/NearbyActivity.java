@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -102,9 +101,7 @@ public class NearbyActivity extends AppCompatActivity {
                 new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
 
             }else{
-
-                Toast.makeText(this,"Unable to Trace your location",Toast.LENGTH_SHORT).show();
-
+                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
             }
         }
     }
