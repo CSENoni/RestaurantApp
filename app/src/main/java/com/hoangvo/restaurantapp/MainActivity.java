@@ -16,7 +16,14 @@ public class MainActivity extends AppCompatActivity {
         Globals g = (Globals)getApplication();
         for (int i = 0; i < g.res.length; i++){
             g.res[i] = new Restaurant();
-            g.res[i].res_name = "TEST";
+            g.res[i].res_name = "Olive Garden";
+            g.res[i].location = "123 Test Street";
+            g.res[i].open = "8:00am";
+            g.res[i].close = "4:00pm";
+            g.res[i].tags = "Italian\nSit Down\n";
+            g.res[i].rating = 4;
+            g.res[i].low = "5.00";
+            g.res[i].high = "50.00";
         }
 
         final Button guestLogin = (Button) findViewById(R.id.guestLogin);

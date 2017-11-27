@@ -8,22 +8,27 @@ public class Restaurant {
     String location;
     // flag set when search criteria doesn't match the restaurants details
     boolean ignore;
-    // continuous string of tags. Tags are separated with a "."
+    // Hours
+    String open;
+    String close;
+    // continuous string of tags. Tags are separated with a "\n"
     String tags;
     // rating (1-5)
-    int rating;
+    float rating;
     // price range
-    double low;
-    double high;
+    String low;
+    String high;
 
     public Restaurant(){
         res_name = "";
         location = "";
         ignore = false;
+        open = "";
+        close = "";
         tags = "";
-        rating = 5;
-        low = 0;
-        high = 100;
+        rating = 3;
+        low = "0";
+        high = "100";
     }
 
 }
