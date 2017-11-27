@@ -3,7 +3,6 @@ package com.hoangvo.restaurantapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,7 +63,15 @@ public class OptionActivity extends AppCompatActivity {
         Button mylist = (Button) findViewById(R.id.btView);
         Button random = (Button) findViewById(R.id.btRandom);
         Button group = (Button) findViewById(R.id.btGroup);
+        Button nearBy = (Button) findViewById(R.id.btNearby);
 
+        nearBy.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent nearbyIntent = new Intent(OptionActivity.this, NearbyActivity.class);
+                OptionActivity.this.startActivity(nearbyIntent);
+            }
+        });
 
         mylist.setOnClickListener(new View.OnClickListener(){
             @Override
