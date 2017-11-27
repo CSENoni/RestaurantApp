@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/edit"
+        android:title="Edit"
+        app:showAsAction="always">
+    </item>
+    <item android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always" >
+    </item>
+    <item android:id="@+id/logout"
+        android:title="Logout" >
+    </item>
+    <item android:id="@+id/home"
+        android:title="Home" >
+    </item>
+    <item android:id="@+id/mylist"
+        android:title="My List" >
+    </item>
+    <item android:id="@+id/random"
+        android:title="Random" >
+    </item>
+    <item android:id="@+id/nearby"
+        android:title="Nearby" >
+    </item>
+    <item android:id="@+id/groups"
+        android:title="Groups" >
+    </item>
+    <item android:id="@+id/help"
+        android:title="Help" >
+    </item>
+
+</menu>

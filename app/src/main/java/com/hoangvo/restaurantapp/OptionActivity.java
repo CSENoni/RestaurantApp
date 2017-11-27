@@ -42,12 +42,12 @@ public class OptionActivity extends AppCompatActivity {
                 OptionActivity.this.startActivity(nearbyIntent);
                 return true;
             case R.id.groups:
-                // Intent groupsIntent = new Intent(OptionActivity.this, GroupsActivity.class);
-                // OptionActivity.this.startActivity(groupsIntent);
+                 Intent groupsIntent = new Intent(OptionActivity.this, GroupActivity.class);
+                 OptionActivity.this.startActivity(groupsIntent);
                 return true;
             case R.id.help:
-                // Intent helpIntent = new Intent(OptionActivity.this, HelpActivity.class);
-                // OptionActivity.this.startActivity(helpIntent);
+                 Intent helpIntent = new Intent(OptionActivity.this, HelpActivity.class);
+                 OptionActivity.this.startActivity(helpIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

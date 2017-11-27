@@ -38,12 +38,12 @@ public class RandomActivity extends AppCompatActivity {
                 RandomActivity.this.startActivity(nearbyIntent);
                 return true;
             case R.id.groups:
-                // Intent groupsIntent = new Intent(RandomActivity.this, GroupsActivity.class);
-                // RandomActivity.this.startActivity(groupsIntent);
+                 Intent groupsIntent = new Intent(RandomActivity.this, GroupActivity.class);
+                 RandomActivity.this.startActivity(groupsIntent);
                 return true;
             case R.id.help:
-                // Intent helpIntent = new Intent(RandomActivity.this, HelpActivity.class);
-                // RandomActivity.this.startActivity(helpIntent);
+                 Intent helpIntent = new Intent(RandomActivity.this, HelpActivity.class);
+                 RandomActivity.this.startActivity(helpIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
