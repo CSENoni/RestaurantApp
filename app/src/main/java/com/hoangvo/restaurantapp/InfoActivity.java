@@ -32,6 +32,10 @@ public class InfoActivity extends AppCompatActivity {
                 Intent optionIntent = new Intent(InfoActivity.this, OptionActivity.class);
                 InfoActivity.this.startActivity(optionIntent);
                 return true;
+            case R.id.mylist:
+                Intent listIntent = new Intent(InfoActivity.this, ListActivity.class);
+                InfoActivity.this.startActivity(listIntent);
+                return true;
             case R.id.random:
                 Intent randomIntent = new Intent(InfoActivity.this, RandomActivity.class);
                 InfoActivity.this.startActivity(randomIntent);
@@ -41,12 +45,12 @@ public class InfoActivity extends AppCompatActivity {
                 InfoActivity.this.startActivity(nearbyIntent);
                 return true;
             case R.id.groups:
-                Intent groupsIntent = new Intent(InfoActivity.this, GroupsActivity.class);
-                InfoActivity.this.startActivity(groupsIntent);
+               // Intent groupsIntent = new Intent(InfoActivity.this, GroupsActivity.class);
+               // InfoActivity.this.startActivity(groupsIntent);
                 return true;
             case R.id.help:
-                Intent helpIntent = new Intent(InfoActivity.this, HelpActivity.class);
-                InfoActivity.this.startActivity(helpIntent);
+               // Intent helpIntent = new Intent(InfoActivity.this, HelpActivity.class);
+               // InfoActivity.this.startActivity(helpIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

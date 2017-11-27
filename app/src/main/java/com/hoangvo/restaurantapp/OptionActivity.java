@@ -4,11 +4,55 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 
 public class OptionActivity extends AppCompatActivity {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.titlemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent logoutIntent = new Intent(OptionActivity.this, MainActivity.class);
+                OptionActivity.this.startActivity(logoutIntent);
+                return true;
+            case R.id.home:
+                Intent optionIntent = new Intent(OptionActivity.this, OptionActivity.class);
+                OptionActivity.this.startActivity(optionIntent);
+                return true;
+            case R.id.mylist:
+                Intent listIntent = new Intent(OptionActivity.this, ListActivity.class);
+                OptionActivity.this.startActivity(listIntent);
+                return true;
+            case R.id.random:
+                Intent randomIntent = new Intent(OptionActivity.this, RandomActivity.class);
+                OptionActivity.this.startActivity(randomIntent);
+                return true;
+            case R.id.nearby:
+                Intent nearbyIntent = new Intent(OptionActivity.this, NearbyActivity.class);
+                OptionActivity.this.startActivity(nearbyIntent);
+                return true;
+            case R.id.groups:
+                // Intent groupsIntent = new Intent(OptionActivity.this, GroupsActivity.class);
+                // OptionActivity.this.startActivity(groupsIntent);
+                return true;
+            case R.id.help:
+                // Intent helpIntent = new Intent(OptionActivity.this, HelpActivity.class);
+                // OptionActivity.this.startActivity(helpIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
