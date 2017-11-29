@@ -6,11 +6,6 @@
         android:title="Edit"
         app:showAsAction="always">
     </item>
-    <item android:id="@+id/search"
-        android:title="Search"
-        android:icon="@drawable/ic_search"
-        app:showAsAction="always" >
-    </item>
     <item android:id="@+id/logout"
         android:title="Logout" >
     </item>

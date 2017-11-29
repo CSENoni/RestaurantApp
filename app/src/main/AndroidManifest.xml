@@ -31,8 +31,8 @@
         <activity android:name=".EditActivity" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".SelectedActivity" />
+        <activity android:name=".EditResActivity" />
         <activity android:name=".RandomActivity"></activity>
-        <activity android:name=".ListActivity" />
         <activity android:name=".NearbyActivity" />
     </application>
 

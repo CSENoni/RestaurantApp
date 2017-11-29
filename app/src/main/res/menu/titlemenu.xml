@@ -10,9 +10,6 @@
     <item android:id="@+id/mylist"
         android:title="My List" >
     </item>
-    <item android:id="@+id/random"
-        android:title="Random" >
-    </item>
     <item android:id="@+id/nearby"
         android:title="Nearby" >
     </item>

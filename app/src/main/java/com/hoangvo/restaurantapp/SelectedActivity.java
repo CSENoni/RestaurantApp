@@ -24,10 +24,6 @@ public class SelectedActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.edit:
-                Intent editIntent = new Intent(SelectedActivity.this, EditActivity.class);
-                SelectedActivity.this.startActivity(editIntent);
-                return true;
             case R.id.search:
                 Intent searchIntent = new Intent(SelectedActivity.this, SearchActivity.class);
                 SelectedActivity.this.startActivity(searchIntent);
@@ -43,10 +39,6 @@ public class SelectedActivity extends AppCompatActivity {
             case R.id.mylist:
                 Intent listIntent = new Intent(SelectedActivity.this, SelectedActivity.class);
                 SelectedActivity.this.startActivity(listIntent);
-                return true;
-            case R.id.random:
-                Intent randomIntent = new Intent(SelectedActivity.this, RandomActivity.class);
-                SelectedActivity.this.startActivity(randomIntent);
                 return true;
             case R.id.nearby:
                 Intent nearbyIntent = new Intent(SelectedActivity.this, NearbyActivity.class);

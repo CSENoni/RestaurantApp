@@ -62,7 +62,7 @@
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="Hours (Ex: 10:00am - 2:00pm)"
-        android:inputType="time"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressText" />
@@ -85,7 +85,7 @@
     <EditText
         android:id="@+id/tagsText"
         android:layout_width="350dp"
-        android:layout_height="40dp"
+        android:layout_height="110dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -110,7 +110,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tagsText"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/submit"

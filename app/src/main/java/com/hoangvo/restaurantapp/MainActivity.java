@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
                 g.res[i].low = "5.00";
                 g.res[i].high = "50.00";
             }
+            g.res[g.res.length-1].res_name = "FrenchRes";
+            g.res[g.res.length-1].tags = "French\nSit Down";
         }
 
         final Button guestLogin = (Button) findViewById(R.id.guestLogin);
