@@ -6,24 +6,14 @@ package com.hoangvo.restaurantapp;
 
 public class Groups {
     String name;
-    String members;
-    String events;
+    String members[];
+    String events[];
 
-    public Groups(String name, String members, String events) {
-        this.name = name;
-        this.members = members;
-        this.events = events;
+    public Groups() {
+       name = "";
+       members = new String[5];;
+       events = new String[5];
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public String getMembers() {
-        return members;
-    }
-
-    public String getEvents() {
-        return events;
-    }
 }

@@ -5,26 +5,57 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class GroupActivity extends AppCompatActivity {
-/*
-    // Group 1
-    SharedPreferences group1SharedPref = getSharedPreferences("group1Info", Context.MODE_PRIVATE);
-    String  g1name = group1SharedPref.getString("group1Name", "");
-    // Group 2
-    SharedPreferences group2SharedPref = getSharedPreferences("group2Info", Context.MODE_PRIVATE);
-    String  g2name = group2SharedPref.getString("group2Name", "");
-    // Group 3
-    SharedPreferences group3SharedPref = getSharedPreferences("group3Info", Context.MODE_PRIVATE);
-    String  g3name = group3SharedPref.getString("group3Name", "");
-*/
-    // Group 4
-    //SharedPreferences group4SharedPref = getSharedPreferences("group4Info", Context.MODE_PRIVATE);
-    //String  g4name = group4SharedPref.getString("group4Name", "");
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.titlemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent logoutIntent = new Intent(GroupActivity.this, MainActivity.class);
+                GroupActivity.this.startActivity(logoutIntent);
+                return true;
+            case R.id.home:
+                Intent optionIntent = new Intent(GroupActivity.this, OptionActivity.class);
+                GroupActivity.this.startActivity(optionIntent);
+                return true;
+            case R.id.mylist:
+                Intent listIntent = new Intent(GroupActivity.this, ListActivity.class);
+                GroupActivity.this.startActivity(listIntent);
+                return true;
+            case R.id.random:
+                Intent randomIntent = new Intent(GroupActivity.this, RandomActivity.class);
+                GroupActivity.this.startActivity(randomIntent);
+                return true;
+            case R.id.nearby:
+                Intent nearbyIntent = new Intent(GroupActivity.this, NearbyActivity.class);
+                GroupActivity.this.startActivity(nearbyIntent);
+                return true;
+            case R.id.groups:
+                Intent groupsIntent = new Intent(GroupActivity.this, GroupActivity.class);
+                GroupActivity.this.startActivity(groupsIntent);
+                return true;
+            case R.id.help:
+                Intent helpIntent = new Intent(GroupActivity.this, HelpActivity.class);
+                GroupActivity.this.startActivity(helpIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 
     @Override

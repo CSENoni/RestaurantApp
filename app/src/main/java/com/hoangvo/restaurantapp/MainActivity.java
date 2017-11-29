@@ -32,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
             g.res[g.res.length-1].tags = "French\nSit Down";
         }
 
+        for (int i = 0; i < g.gro.length; i++){
+            g.gro[i] = new Groups();
+            g.gro[i].name = "Empty Group";
+        }
         final Button guestLogin = (Button) findViewById(R.id.guestLogin);
         final Button newUser = (Button) findViewById(R.id.newUser);
         final Button login = (Button) findViewById(R.id.login);

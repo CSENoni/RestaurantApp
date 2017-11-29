@@ -9,8 +9,8 @@ public class GroupEvent {
     String area;
     String date;
     String time;
-    Integer priceHigh;
-    Integer priceLow;
+    int priceHigh;
+    int priceLow;
     String tags;
 
     public GroupEvent(String name, String area, String date, String time, Integer priceHigh, Integer priceLow, String tags) {
