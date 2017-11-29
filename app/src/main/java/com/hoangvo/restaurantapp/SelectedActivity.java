@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+
+import java.util.Random;
 
 
 public class SelectedActivity extends AppCompatActivity {
@@ -37,7 +40,7 @@ public class SelectedActivity extends AppCompatActivity {
                 SelectedActivity.this.startActivity(optionIntent);
                 return true;
             case R.id.mylist:
-                Intent listIntent = new Intent(SelectedActivity.this, SelectedActivity.class);
+                Intent listIntent = new Intent(SelectedActivity.this, ListActivity.class);
                 SelectedActivity.this.startActivity(listIntent);
                 return true;
             case R.id.nearby:
@@ -61,6 +64,8 @@ public class SelectedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        Button random = (Button) findViewById(R.id.random);
 
         Globals g = (Globals)getApplication();
         int total = 0;
@@ -86,6 +91,14 @@ public class SelectedActivity extends AppCompatActivity {
                 Intent infoIntent = new Intent(SelectedActivity.this, InfoActivity.class);
                 infoIntent.putExtra("pos", id);
                 SelectedActivity.this.startActivity(infoIntent);
+            }
+        });
+
+        random.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent randomIntent = new Intent(SelectedActivity.this, RandomActivity.class);
+                SelectedActivity.this.startActivity(randomIntent);
             }
         });
     }

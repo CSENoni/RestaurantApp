@@ -85,7 +85,7 @@ public class RandomActivity extends AppCompatActivity {
 
         g = (Globals)getApplication();
         Button reroll = (Button) findViewById(R.id.next);
-        Button accept = (Button) findViewById(R.id.accept);
+        final Button accept = (Button) findViewById(R.id.accept);
 
 
         int max = g.res.length;
@@ -122,6 +122,7 @@ public class RandomActivity extends AppCompatActivity {
         ed4.setText(priceTemp);
         ed5.setText(selected.tags);
         rb.setRating(selected.rating);
+        final long p = (long)position;
 
         reroll.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -137,7 +138,8 @@ public class RandomActivity extends AppCompatActivity {
             public void onClick(View v) {
                 for(int i = 0; i < g.res.length; i++)
                     g.res[i].ignore = false;
-                Intent acceptIntent = new Intent(RandomActivity.this, RandomActivity.class);
+                Intent acceptIntent = new Intent(RandomActivity.this, InfoActivity.class);
+                acceptIntent.putExtra("pos", (long)p);
                 RandomActivity.this.startActivity(acceptIntent);
             }
         });
