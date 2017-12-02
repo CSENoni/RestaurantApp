@@ -32,10 +32,22 @@ public class MainActivity extends AppCompatActivity {
             initializeRes();
         }
 
-        for (int i = 0; i < g.gro.length; i++){
-            g.gro[i] = new Groups();
-            g.gro[i].name = "Empty Group";
+            for (int i = 0; i < g.gro.length; i++) {
+                g.gro[i] = new Groups();
+                g.gro[i].name = "Empty Group";
+                for (int j = 0; j < g.gro[i].members.length; j++){
+                    g.gro[i].members[j] = "";
+                }
+                for (int j = 0; j < g.gro[i].events.length; j++){
+                    g.gro[i].events[j] = "";
+                }
+            }
+
+            for (int i = 0; i < g.groEvt.length; i++) {
+                g.groEvt[i] = new GroupEvent();
+            }
         }
+
         final Button guestLogin = (Button) findViewById(R.id.guestLogin);
         final Button newUser = (Button) findViewById(R.id.newUser);
         final Button login = (Button) findViewById(R.id.login);
