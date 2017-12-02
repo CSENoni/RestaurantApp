@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 g.res[i].high = "50.00";
             }
             initializeRes();
-        }
+
 
             for (int i = 0; i < g.gro.length; i++) {
                 g.gro[i] = new Groups();
