@@ -102,7 +102,7 @@ public class RandomActivity extends AppCompatActivity {
                     break loop;
                 }
             }
-            position = new Random().nextInt(g.res.length);
+            position = new Random().nextInt(max);
         }
 
         final Restaurant selected = g.res[position];

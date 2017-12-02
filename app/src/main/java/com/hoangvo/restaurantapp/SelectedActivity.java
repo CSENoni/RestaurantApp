@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -60,6 +61,8 @@ public class SelectedActivity extends AppCompatActivity {
         }
     }
 
+    ArrayList<Restaurant> reslist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,23 +76,22 @@ public class SelectedActivity extends AppCompatActivity {
             if(!g.res[i].ignore)
                 total++;
         }
-        String reslist[] = new String[total];
-        int current = 0;
+        reslist = new ArrayList<Restaurant>();
         for (int i = 0; i < g.res.length; i++){
             if(!g.res[i].ignore){
-                reslist[current] = g.res[i].res_name;
-                current++;
+                reslist.add(g.res[i]);
             }
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, reslist);
+        ArrayAdapter adapter = new ArrayAdapter<Restaurant>(this, R.layout.activity_listview, reslist);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                Restaurant clicked = reslist.get((int)id);
                 Intent infoIntent = new Intent(SelectedActivity.this, InfoActivity.class);
-                infoIntent.putExtra("pos", id);
+                infoIntent.putExtra("pos", (long)clicked.position);
                 SelectedActivity.this.startActivity(infoIntent);
             }
         });

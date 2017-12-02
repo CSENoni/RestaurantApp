@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -40,7 +41,7 @@ public class EditActivity extends AppCompatActivity {
                 EditActivity.this.startActivity(optionIntent);
                 return true;
             case R.id.mylist:
-                Intent listIntent = new Intent(EditActivity.this, EditActivity.class);
+                Intent listIntent = new Intent(EditActivity.this, ListActivity.class);
                 EditActivity.this.startActivity(listIntent);
                 return true;
             case R.id.nearby:
@@ -74,6 +75,7 @@ public class EditActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, reslist);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
+        listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
@@ -83,5 +85,7 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
 

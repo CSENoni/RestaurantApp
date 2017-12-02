@@ -2,6 +2,8 @@ package com.hoangvo.restaurantapp;
 
 
 public class Restaurant {
+    // Postion in array
+    int position;
     // restaurant name
     String res_name;
     // restaurant location
@@ -31,4 +33,8 @@ public class Restaurant {
         high = "100";
     }
 
+    @Override
+    public String toString(){
+        return res_name;
+    }
 }
