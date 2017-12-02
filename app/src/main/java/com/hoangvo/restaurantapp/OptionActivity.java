@@ -32,10 +32,6 @@ public class OptionActivity extends AppCompatActivity {
                 Intent listIntent = new Intent(OptionActivity.this, ListActivity.class);
                 OptionActivity.this.startActivity(listIntent);
                 return true;
-            case R.id.random:
-                Intent randomIntent = new Intent(OptionActivity.this, RandomActivity.class);
-                OptionActivity.this.startActivity(randomIntent);
-                return true;
             case R.id.nearby:
                 Intent nearbyIntent = new Intent(OptionActivity.this, NearbyActivity.class);
                 OptionActivity.this.startActivity(nearbyIntent);

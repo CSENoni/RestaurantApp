@@ -46,10 +46,6 @@ public class ListActivity extends AppCompatActivity {
                 Intent listIntent = new Intent(ListActivity.this, ListActivity.class);
                 ListActivity.this.startActivity(listIntent);
                 return true;
-            case R.id.random:
-                Intent randomIntent = new Intent(ListActivity.this, RandomActivity.class);
-                ListActivity.this.startActivity(randomIntent);
-                return true;
             case R.id.nearby:
                 Intent nearbyIntent = new Intent(ListActivity.this, NearbyActivity.class);
                 ListActivity.this.startActivity(nearbyIntent);
@@ -72,6 +68,8 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        Button random = (Button) findViewById(R.id.random);
+
         Globals g = (Globals)getApplication();
         String reslist[] = new String[g.res.length];
         for (int i = 0; i < g.res.length; i++){
@@ -87,6 +85,14 @@ public class ListActivity extends AppCompatActivity {
                 Intent infoIntent = new Intent(ListActivity.this, InfoActivity.class);
                 infoIntent.putExtra("pos", id);
                 ListActivity.this.startActivity(infoIntent);
+            }
+        });
+
+        random.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent randomIntent = new Intent(ListActivity.this, RandomActivity.class);
+                ListActivity.this.startActivity(randomIntent);
             }
         });
     }

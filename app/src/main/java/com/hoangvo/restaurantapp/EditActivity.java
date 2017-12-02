@@ -43,10 +43,6 @@ public class EditActivity extends AppCompatActivity {
                 Intent listIntent = new Intent(EditActivity.this, EditActivity.class);
                 EditActivity.this.startActivity(listIntent);
                 return true;
-            case R.id.random:
-                Intent randomIntent = new Intent(EditActivity.this, RandomActivity.class);
-                EditActivity.this.startActivity(randomIntent);
-                return true;
             case R.id.nearby:
                 Intent nearbyIntent = new Intent(EditActivity.this, NearbyActivity.class);
                 EditActivity.this.startActivity(nearbyIntent);
@@ -67,7 +63,7 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_edit);
 
         Globals g = (Globals)getApplication();
         String reslist[] = new String[g.res.length];

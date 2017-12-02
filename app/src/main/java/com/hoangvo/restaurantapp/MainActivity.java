@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 g.res[i].high = "50.00";
             }
 
+            g.res[g.res.length-1].res_name = "FrenchRes";
+            g.res[g.res.length-1].tags = "French\nSit Down";
+
 
             for (int i = 0; i < g.gro.length; i++) {
                 g.gro[i] = new Groups();

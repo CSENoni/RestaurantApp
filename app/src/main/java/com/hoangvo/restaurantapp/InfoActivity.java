@@ -11,9 +11,11 @@ import android.widget.RatingBar;
 
 public class InfoActivity extends AppCompatActivity {
 
+    long position;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.titlemenu, menu);
+        getMenuInflater().inflate(R.menu.infomenu, menu);
         return true;
     }
 
@@ -21,6 +23,11 @@ public class InfoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+            case R.id.edit:
+                Intent editIntent = new Intent(InfoActivity.this, EditResActivity.class);
+                editIntent.putExtra("pos", position);
+                InfoActivity.this.startActivity(editIntent);
+                return true;
             case R.id.logout:
                 Intent logoutIntent = new Intent(InfoActivity.this, MainActivity.class);
                 InfoActivity.this.startActivity(logoutIntent);
@@ -32,10 +39,6 @@ public class InfoActivity extends AppCompatActivity {
             case R.id.mylist:
                 Intent listIntent = new Intent(InfoActivity.this, ListActivity.class);
                 InfoActivity.this.startActivity(listIntent);
-                return true;
-            case R.id.random:
-                Intent randomIntent = new Intent(InfoActivity.this, RandomActivity.class);
-                InfoActivity.this.startActivity(randomIntent);
                 return true;
             case R.id.nearby:
                 Intent nearbyIntent = new Intent(InfoActivity.this, NearbyActivity.class);
@@ -61,7 +64,7 @@ public class InfoActivity extends AppCompatActivity {
 
         Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
-        long position = bundle.getLong("pos");
+        position = bundle.getLong("pos");
         Restaurant selected = g.res[(int)position];
 
         EditText ed1, ed2, ed3, ed4, ed5;
