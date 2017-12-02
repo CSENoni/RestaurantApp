@@ -10,6 +10,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 
@@ -72,16 +73,46 @@ public class EditActivity extends AppCompatActivity {
             reslist[i] = g.res[i].res_name;
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, reslist);
+        final Button add = (Button) findViewById(R.id.add);
+        final Button done = (Button) findViewById(R.id.done);
+        final Button delete = (Button) findViewById(R.id.delete);
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, reslist);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-        listView.setOnItemClickListener(new OnItemClickListener() {
+        /*listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent infoIntent = new Intent(EditActivity.this, InfoActivity.class);
                 infoIntent.putExtra("pos", id);
                 EditActivity.this.startActivity(infoIntent);
+            }
+        });*/
+
+        done.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent doneIntent = new Intent(EditActivity.this, ListActivity.class);
+                EditActivity.this.startActivity(doneIntent);
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Intent addIntent = new Intent(EditActivity.this, ListActivity.class);
+                EditActivity.this.startActivity(addIntent);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                Intent deleteIntent = new Intent(EditActivity.this, ListActivity.class);
+                EditActivity.this.startActivity(deleteIntent);
             }
         });
     }
