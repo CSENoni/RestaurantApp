@@ -72,10 +72,10 @@ public class GroupDisplyActivity extends AppCompatActivity {
         Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
         long i = bundle.getLong("gID");
-        Groups clickedOn = g.gro[(int)i];
+        final Groups clickedOn = g.gro[(int)i];
         int count = g.gro[(int)i].members.length;
 
-        EditText gName = (EditText) findViewById(R.id.editTextGroupName);
+        final EditText gName = (EditText) findViewById(R.id.editTextGroupName);
         EditText editText = gName;
         editText.setText(clickedOn.name);
 
@@ -146,7 +146,24 @@ public class GroupDisplyActivity extends AppCompatActivity {
             }
         });
 
+        Button btnSave = (Button) findViewById(R.id.button7);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickedOn.name = gName.getText().toString();
 
+                int adptLength = adapter.getCount();
+                for (int j = 0; j < adptLength; j++) {
+                    clickedOn.members[j] = adapter.getItem(j);
+                }
+
+                int adpt1Length = adapter1.getCount();
+                for (int j = 0; j < adpt1Length; j++) {
+                    clickedOn.events[j] = adapter1.getItem(j);
+                }
+
+            }
+        });
 
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

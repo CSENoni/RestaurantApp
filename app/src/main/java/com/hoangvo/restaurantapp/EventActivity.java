@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class EventActivity extends AppCompatActivity {
@@ -61,9 +63,10 @@ public class EventActivity extends AppCompatActivity {
         Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
         long i = bundle.getLong("gID");
-        GroupEvent clickedOn = g.groEvt[(int)i];
+        final GroupEvent clickedOn = g.groEvt[(int)i];
+        final Groups clickedOnEvent = g.gro[(int)i];
 
-        EditText name, area, date_time,  priceHigh, priceLow, tags;
+        final EditText name, area, date_time,  priceHigh, priceLow, tags;
 
         // ed1 = (EditText) findViewById(R.id.nameText);
         name = (EditText) findViewById(R.id.editText2);
@@ -72,13 +75,25 @@ public class EventActivity extends AppCompatActivity {
         priceHigh = (EditText) findViewById(R.id.editText5);
         priceLow = (EditText) findViewById(R.id.editText6);
 
-        name.setText( clickedOn.name);
+        name.setText( clickedOnEvent.events[(int)i]);
         area.setText(clickedOn.area);
         date_time.setText(clickedOn.date);
         priceHigh.setText(clickedOn.priceHigh);
-        priceLow.setText(clickedOn.priceHigh);
+        priceLow.setText(clickedOn.priceLow);
 
+        Button btnSave = (Button) findViewById(R.id.button6);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickedOnEvent.name = name.getText().toString();
+                clickedOn.name = name.getText().toString();
+                clickedOn.area = area.getText().toString();
+                clickedOn.date = date_time.getText().toString();
+                clickedOn.priceHigh = priceHigh.getText().toString();
+                clickedOn.priceLow = priceLow.getText().toString();
 
+            }
+        });
 
 
 
