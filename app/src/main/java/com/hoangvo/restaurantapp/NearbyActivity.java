@@ -14,7 +14,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -29,7 +30,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NearbyActivity extends AppCompatActivity {
 
@@ -37,6 +37,49 @@ public class NearbyActivity extends AppCompatActivity {
     ListView listView;
     LocationManager locationManager;
     String lattitude,longitude;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.titlemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent logoutIntent = new Intent(NearbyActivity.this, MainActivity.class);
+                NearbyActivity.this.startActivity(logoutIntent);
+                return true;
+            case R.id.home:
+                Intent optionIntent = new Intent(NearbyActivity.this, OptionActivity.class);
+                NearbyActivity.this.startActivity(optionIntent);
+                return true;
+            case R.id.mylist:
+                Intent listIntent = new Intent(NearbyActivity.this, ListActivity.class);
+                NearbyActivity.this.startActivity(listIntent);
+                return true;
+            case R.id.random:
+                Intent randomIntent = new Intent(NearbyActivity.this, RandomActivity.class);
+                NearbyActivity.this.startActivity(randomIntent);
+                return true;
+            case R.id.nearby:
+                Intent nearbyIntent = new Intent(NearbyActivity.this, NearbyActivity.class);
+                NearbyActivity.this.startActivity(nearbyIntent);
+                return true;
+            case R.id.groups:
+                Intent groupsIntent = new Intent(NearbyActivity.this, NearbyActivity.class);
+                NearbyActivity.this.startActivity(groupsIntent);
+                return true;
+            case R.id.help:
+                Intent helpIntent = new Intent(NearbyActivity.this, HelpActivity.class);
+                NearbyActivity.this.startActivity(helpIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,19 +227,14 @@ public class NearbyActivity extends AppCompatActivity {
                 JSONObject jObject = new JSONObject(result);
                 JSONArray jArray = jObject.getJSONArray("results");
 
-                List<String> res = new ArrayList<String>();
+                ArrayList<String> res = new ArrayList<String>();
                 for(int i = 0; i < jArray.length(); i++){
                     JSONObject obj = jArray.getJSONObject(i);
-//                    textView.setText(obj.getString("name"));
                     res.add(obj.getString("name"));
                 }
 
-                String[] res1 = res.toArray(new String[res.size()]);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(NearbyActivity.this, android.R.layout.simple_list_item_1, res1);
-
-                listView.setAdapter(arrayAdapter);
-
-
+                MyAdapter adapter = new MyAdapter(NearbyActivity.this, res);
+                listView.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

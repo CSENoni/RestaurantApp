@@ -98,11 +98,11 @@ public class RandomActivity extends AppCompatActivity {
                 if(!g.res[i].ignore)
                     break;
                 if(i == g.res.length-1) {
-                    Toast.makeText(getApplicationContext(),"There are no more restaurants to choose from.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"All restaurants have been gone through.",Toast.LENGTH_LONG).show();
                     break loop;
                 }
             }
-            position = new Random().nextInt(g.res.length);
+            position = new Random().nextInt(max);
         }
 
         final Restaurant selected = g.res[position];

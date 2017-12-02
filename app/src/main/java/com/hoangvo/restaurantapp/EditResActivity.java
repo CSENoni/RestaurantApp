@@ -99,6 +99,10 @@ public class EditResActivity extends AppCompatActivity {
                 store = prices.split("-");
                 store[0] = store[0].trim();
                 store[1] = store[1].trim();
+                if(store[0].startsWith("$"))
+                    store[0] = store[0].substring(1);
+                if(store[1].startsWith("$"))
+                    store[1] = store[1].substring(1);
                 selected.low = store[0];
                 selected.high = store[1];
                 selected.tags = ed5.getText().toString();
