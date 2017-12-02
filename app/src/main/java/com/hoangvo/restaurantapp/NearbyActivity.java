@@ -14,6 +14,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -35,6 +37,49 @@ public class NearbyActivity extends AppCompatActivity {
     ListView listView;
     LocationManager locationManager;
     String lattitude,longitude;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.titlemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent logoutIntent = new Intent(NearbyActivity.this, MainActivity.class);
+                NearbyActivity.this.startActivity(logoutIntent);
+                return true;
+            case R.id.home:
+                Intent optionIntent = new Intent(NearbyActivity.this, OptionActivity.class);
+                NearbyActivity.this.startActivity(optionIntent);
+                return true;
+            case R.id.mylist:
+                Intent listIntent = new Intent(NearbyActivity.this, ListActivity.class);
+                NearbyActivity.this.startActivity(listIntent);
+                return true;
+            case R.id.random:
+                Intent randomIntent = new Intent(NearbyActivity.this, RandomActivity.class);
+                NearbyActivity.this.startActivity(randomIntent);
+                return true;
+            case R.id.nearby:
+                Intent nearbyIntent = new Intent(NearbyActivity.this, NearbyActivity.class);
+                NearbyActivity.this.startActivity(nearbyIntent);
+                return true;
+            case R.id.groups:
+                Intent groupsIntent = new Intent(NearbyActivity.this, NearbyActivity.class);
+                NearbyActivity.this.startActivity(groupsIntent);
+                return true;
+            case R.id.help:
+                Intent helpIntent = new Intent(NearbyActivity.this, HelpActivity.class);
+                NearbyActivity.this.startActivity(helpIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
