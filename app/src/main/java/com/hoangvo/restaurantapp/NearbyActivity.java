@@ -14,7 +14,6 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -29,7 +28,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NearbyActivity extends AppCompatActivity {
 
@@ -184,19 +182,14 @@ public class NearbyActivity extends AppCompatActivity {
                 JSONObject jObject = new JSONObject(result);
                 JSONArray jArray = jObject.getJSONArray("results");
 
-                List<String> res = new ArrayList<String>();
+                ArrayList<String> res = new ArrayList<String>();
                 for(int i = 0; i < jArray.length(); i++){
                     JSONObject obj = jArray.getJSONObject(i);
-//                    textView.setText(obj.getString("name"));
                     res.add(obj.getString("name"));
                 }
 
-                String[] res1 = res.toArray(new String[res.size()]);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(NearbyActivity.this, android.R.layout.simple_list_item_1, res1);
-
-                listView.setAdapter(arrayAdapter);
-
-
+                MyAdapter adapter = new MyAdapter(NearbyActivity.this, res);
+                listView.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
