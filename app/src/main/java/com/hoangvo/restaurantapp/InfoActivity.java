@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -86,7 +88,7 @@ public class InfoActivity extends AppCompatActivity {
         ed5 = (EditText) findViewById(R.id.tagsText);
 
         if(nearBy){
-            int pos = bundle.getInt("pos");
+            final int pos = bundle.getInt("pos");
             JSONObject jsonRes = g.nRes.get(pos);
             try {
                 ed1.setText(jsonRes.getString("name"));
@@ -95,6 +97,17 @@ public class InfoActivity extends AppCompatActivity {
                 ed4.setText("?");
                 ed5.setText("?");
                 rb.setRating((float)jsonRes.getDouble("rating"));
+
+                Button showMap = (Button) findViewById(R.id.show_map);
+                showMap.setVisibility(View.VISIBLE);
+                showMap.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent mapIntent = new Intent(InfoActivity.this, MapsActivity.class);
+                        mapIntent.putExtra("pos", pos);
+                        InfoActivity.this.startActivity(mapIntent);
+                    }
+                });
             } catch (JSONException e) {
                 e.printStackTrace();
             }
