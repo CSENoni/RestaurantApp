@@ -92,14 +92,14 @@ public class SearchActivity extends AppCompatActivity {
                 }
 
                 if (!TextUtils.isEmpty(name)){
-                    for(int i = 0; i < g.res.length; i++){
+                    for(int i = 0; i < g.limit; i++){
                         if(!name.equals(g.res[i].res_name))
                             g.res[i].ignore = true;
                     }
                 }
 
                 if (!TextUtils.isEmpty(address)){
-                    for(int i = 0; i < g.res.length; i++){
+                    for(int i = 0; i < g.limit; i++){
                         if(!address.equals(g.res[i].location))
                             g.res[i].ignore = true;
                     }
@@ -146,11 +146,11 @@ public class SearchActivity extends AppCompatActivity {
                         if(spm && (high < 12.01 || high > 12.6))
                             high += 12;
 
-                        for(Restaurant r : g.res){
+                        for(int i = 0; i < g.limit; i++){
                             boolean ropm = false;
                             boolean rcpm = false;
-                            String ro = r.open;
-                            String rc = r.close;
+                            String ro = g.res[i].open;
+                            String rc = g.res[i].close;
                             if (ro.endsWith("am"))
                                 ro = ro.substring(0, ro.length()-2);
                             if (ro.endsWith("pm")) {
@@ -174,7 +174,7 @@ public class SearchActivity extends AppCompatActivity {
                                 rh += 12;
 
                             if(rl > high || rh < low)
-                                r.ignore = true;
+                                g.res[i].ignore = true;
                         }
                     }
                 }
@@ -198,11 +198,11 @@ public class SearchActivity extends AppCompatActivity {
                         values[1] = temp;
                         float low = Float.parseFloat(values[0]);
                         float high = Float.parseFloat(values[1]);
-                        for(Restaurant r : g.res){
-                            float rl = Float.parseFloat(r.low);
-                            float rh = Float.parseFloat(r.high);
+                        for(int i = 0; i < g.limit; i++){
+                            float rl = Float.parseFloat(g.res[i].low);
+                            float rh = Float.parseFloat(g.res[i].high);
                             if(rl > high || rh < low)
-                                r.ignore = true;
+                                g.res[i].ignore = true;
                         }
                     }
                 }
@@ -212,7 +212,7 @@ public class SearchActivity extends AppCompatActivity {
                     //String array of inputted tags
                     String[] buff = tags.split("\\n");
 
-                    for(int i = 0; i < g.res.length; i++){
+                    for(int i = 0; i < g.limit; i++){
                         String[] ffub = g.res[i].tags.split("\\n");
 
                         if (buff.length > ffub.length){
@@ -239,9 +239,9 @@ public class SearchActivity extends AppCompatActivity {
                 }
 
                 if(rb.getRating() > 0){
-                    for(Restaurant r : g.res){
-                        if(r.rating < rb.getRating())
-                            r.ignore = true;
+                    for(int i = 0; i < g.limit; i++){
+                        if(g.res[i].rating < rb.getRating())
+                            g.res[i].ignore = true;
                     }
                 }
 

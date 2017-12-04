@@ -71,48 +71,48 @@ public class MainActivity extends AppCompatActivity {
 
     public void initializeRes (){
         Globals g = (Globals)getApplication();
-        g.res[0].res_name = "McDonalds";
-        g.res[0].location = "407 15th Ave SE, Minneapolis, MN 55414";
-        g.res[0].open = "5:00am";
-        g.res[0].close = "11:59pm";
-        g.res[0].tags = "American\nFast Food\nDrive Through\nBurgers";
-        g.res[0].low = "1.00";
-        g.res[0].high = "15.00";
+        Restaurant temp = new Restaurant();
+        temp.res_name = "McDonalds";
+        temp.location = "407 15th Ave SE, Minneapolis, MN 55414";
+        temp.open = "5:00am";
+        temp.close = "11:59pm";
+        temp.tags = "American\nFast Food\nDrive Through\nBurgers";
+        temp.low = "1.00";
+        temp.high = "15.00";
+        g.addRes(temp);
 
-        g.res[1].res_name = "Chipotle";
-        g.res[1].location = "800 Washington Ave SE, Minneapolis, MN 55414";
-        g.res[1].open = "10:45am";
-        g.res[1].close = "10:00pm";
-        g.res[1].tags = "Mexican\nFast Food\nBurritos";
-        g.res[1].low = "5.00";
-        g.res[1].high = "20.00";
-        g.res[1].rating = 4;
 
-        g.res[2].res_name = "Applebee's";
-        g.res[2].location = "615 Washington Ave SE, Minneapolis, MN 55414";
-        g.res[2].open = "11:00am";
-        g.res[2].close = "11:59pm";
-        g.res[2].tags = "American\nBar & Grill\nSit Down\nBurgers\nSteak\nPasta";
-        g.res[2].low = "5.00";
-        g.res[2].high = "30.00";
-        g.res[2].rating = 4.5f;
+        temp = new Restaurant();
+        temp.res_name = "Chipotle";
+        temp.location = "800 Washington Ave SE, Minneapolis, MN 55414";
+        temp.open = "10:45am";
+        temp.close = "10:00pm";
+        temp.tags = "Mexican\nFast Food\nBurritos";
+        temp.low = "5.00";
+        temp.high = "20.00";
+        temp.rating = 4;
+        g.addRes(temp);
 
-        g.res[3].res_name = "Teahouse";
-        g.res[3].location = "2425 University Ave SE, Minneapolis, MN 55414";
-        g.res[3].open = "11:00am";
-        g.res[3].close = "9:30pm";
-        g.res[3].tags = "Chinese\nSit Down\nLo Mein\nChow Mein\nDim Sum\n";
-        g.res[3].low = "5.00";
-        g.res[3].high = "20.00";
-        g.res[3].rating = 4;
+        temp = new Restaurant();
+        temp.res_name = "Applebee's";
+        temp.location = "615 Washington Ave SE, Minneapolis, MN 55414";
+        temp.open = "11:00am";
+        temp.close = "11:59pm";
+        temp.tags = "American\nBar & Grill\nSit Down\nBurgers\nSteak\nPasta";
+        temp.low = "5.00";
+        temp.high = "30.00";
+        temp.rating = 4.5f;
+        g.addRes(temp);
 
-        g.res[8].res_name = "Chipotle";
-        g.res[8].location = "800 Washington Ave SE, Minneapolis, MN 55414";
-        g.res[8].open = "10:45am";
-        g.res[8].close = "10:00pm";
-        g.res[8].tags = "Mexican\nFast Food\nBurritos";
-        g.res[8].low = "5.00";
-        g.res[8].high = "20.00";
-        g.res[8].rating = 4;
+        temp = new Restaurant();
+        temp.res_name = "Teahouse";
+        temp.location = "2425 University Ave SE, Minneapolis, MN 55414";
+        temp.open = "11:00am";
+        temp.close = "9:30pm";
+        temp.tags = "Chinese\nSit Down\nLo Mein\nChow Mein\nDim Sum\n";
+        temp.low = "5.00";
+        temp.high = "20.00";
+        temp.rating = 4;
+        g.addRes(temp);
     }
 }
