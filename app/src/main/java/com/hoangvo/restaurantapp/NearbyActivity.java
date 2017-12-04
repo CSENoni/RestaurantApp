@@ -123,7 +123,7 @@ public class NearbyActivity extends AppCompatActivity {
                 lattitude = String.valueOf(latti);
                 longitude = String.valueOf(longi);
 
-                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
+                    new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
 
 
             } else  if (location1 != null) {
@@ -228,10 +228,16 @@ public class NearbyActivity extends AppCompatActivity {
                 JSONArray jArray = jObject.getJSONArray("results");
 
                 ArrayList<String> res = new ArrayList<String>();
+                ArrayList<JSONObject> temp = new ArrayList<JSONObject>();
+
                 for(int i = 0; i < jArray.length(); i++){
                     JSONObject obj = jArray.getJSONObject(i);
+                    temp.add(obj);
                     res.add(obj.getString("name"));
                 }
+
+                Globals g = (Globals) getApplication();
+                g.nRes = new ArrayList<JSONObject>(temp);
 
                 MyAdapter adapter = new MyAdapter(NearbyActivity.this, res);
                 listView.setAdapter(adapter);

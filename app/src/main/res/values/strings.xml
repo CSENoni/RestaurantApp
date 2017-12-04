@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RestaurantApp</string>
     <string name="title_activity_add_group">AddGroupActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

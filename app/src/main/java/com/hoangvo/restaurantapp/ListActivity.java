@@ -69,8 +69,8 @@ public class ListActivity extends AppCompatActivity {
         Button random = (Button) findViewById(R.id.random);
 
         Globals g = (Globals)getApplication();
-        String reslist[] = new String[g.res.length];
-        for (int i = 0; i < g.res.length; i++){
+        String reslist[] = new String[g.limit];
+        for (int i = 0; i < g.limit; i++){
             reslist[i] = g.res[i].res_name;
         }
 
@@ -81,6 +81,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent infoIntent = new Intent(ListActivity.this, InfoActivity.class);
+                infoIntent.putExtra("nearBy", false);
                 infoIntent.putExtra("pos", id);
                 ListActivity.this.startActivity(infoIntent);
             }

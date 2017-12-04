@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 
 public class EditActivity extends AppCompatActivity {
     @Override
@@ -68,10 +70,12 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
         Globals g = (Globals)getApplication();
-        String reslist[] = new String[g.res.length];
-        for (int i = 0; i < g.res.length; i++){
+        String reslist[] = new String[g.limit];
+        for (int i = 0; i < g.limit; i++){
             reslist[i] = g.res[i].res_name;
         }
+
+        ArrayList<Integer> deleted = new ArrayList<Integer>();
 
         final Button add = (Button) findViewById(R.id.add);
         final Button done = (Button) findViewById(R.id.done);
@@ -84,6 +88,7 @@ public class EditActivity extends AppCompatActivity {
         /*listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+
                 Intent infoIntent = new Intent(EditActivity.this, InfoActivity.class);
                 infoIntent.putExtra("pos", id);
                 EditActivity.this.startActivity(infoIntent);
