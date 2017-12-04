@@ -69,8 +69,8 @@ public class ListActivity extends AppCompatActivity {
         Button random = (Button) findViewById(R.id.random);
 
         Globals g = (Globals)getApplication();
-        String reslist[] = new String[g.res.length];
-        for (int i = 0; i < g.res.length; i++){
+        String reslist[] = new String[g.limit];
+        for (int i = 0; i < g.limit; i++){
             reslist[i] = g.res[i].res_name;
         }
 

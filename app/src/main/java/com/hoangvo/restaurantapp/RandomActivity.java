@@ -88,16 +88,16 @@ public class RandomActivity extends AppCompatActivity {
         final Button accept = (Button) findViewById(R.id.accept);
 
 
-        int max = g.res.length;
+        int max = g.limit;
         int position = new Random().nextInt(max);
 
         loop:
         while(g.res[position].ignore) {
             //Check if there is still a valid restaurant.
-            for(int i = 0; i < g.res.length; i++){
+            for(int i = 0; i < g.limit; i++){
                 if(!g.res[i].ignore)
                     break;
-                if(i == g.res.length-1) {
+                if(i == g.limit-1) {
                     Toast.makeText(getApplicationContext(),"All restaurants have been gone through.",Toast.LENGTH_LONG).show();
                     break loop;
                 }
