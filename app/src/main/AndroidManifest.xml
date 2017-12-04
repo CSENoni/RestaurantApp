@@ -35,7 +35,8 @@
         <activity android:name=".NearbyActivity" />
         <activity android:name=".RandomActivity" />
         <activity android:name=".GroupDisplyActivity" />
-        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".EventActivity" />
+        <activity android:name=".EditGroupMembersActivity"></activity>
     </application>
 
 </manifest>
