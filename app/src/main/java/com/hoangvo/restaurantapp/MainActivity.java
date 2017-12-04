@@ -114,13 +114,26 @@ public class MainActivity extends AppCompatActivity {
         g.res[3].high = "20.00";
         g.res[3].rating = 4;
 
-        g.res[8].res_name = "Chipotle";
-        g.res[8].location = "800 Washington Ave SE, Minneapolis, MN 55414";
-        g.res[8].open = "10:45am";
-        g.res[8].close = "10:00pm";
-        g.res[8].tags = "Mexican\nFast Food\nBurritos";
+        g.res[7].res_name = "Raising Cane's";
+        g.res[7].location = "825 Washington Ave SE, Minneapolis, MN 55414";
+        g.res[7].open = "10:00am";
+        g.res[7].close = "11:00pm";
+        g.res[7].tags = "American\nFast Food\nChicken Fingers";
+        g.res[7].low = "5.00";
+        g.res[7].high = "12.00";
+        g.res[7].rating = 5;
+
+        Restaurant temp = new Restaurant();
+        temp.res_name = "BLAH";
+        g.addRes(temp);
+
+        g.res[8].res_name = "Raising Cane's";
+        g.res[8].location = "825 Washington Ave SE, Minneapolis, MN 55414";
+        g.res[8].open = "10:00am";
+        g.res[8].close = "11:00pm";
+        g.res[8].tags = "American\nFast Food\nChicken Fingers";
         g.res[8].low = "5.00";
-        g.res[8].high = "20.00";
-        g.res[8].rating = 4;
+        g.res[8].high = "12.00";
+        g.res[8].rating = 5;
     }
 }
