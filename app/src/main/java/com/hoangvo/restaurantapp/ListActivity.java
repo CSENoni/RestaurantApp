@@ -81,6 +81,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent infoIntent = new Intent(ListActivity.this, InfoActivity.class);
+                infoIntent.putExtra("nearBy", false);
                 infoIntent.putExtra("pos", id);
                 ListActivity.this.startActivity(infoIntent);
             }

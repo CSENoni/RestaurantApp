@@ -7,11 +7,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class InfoActivity extends AppCompatActivity {
 
     long position;
+    boolean nearBy;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -22,12 +27,18 @@ public class InfoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        Bundle bundle = getIntent().getExtras();
+        nearBy = bundle.getBoolean("nearBy");
         switch (item.getItemId()) {
             case R.id.edit:
-                Intent editIntent = new Intent(InfoActivity.this, EditResActivity.class);
-                editIntent.putExtra("pos", position);
-                InfoActivity.this.startActivity(editIntent);
-                return true;
+                if(!nearBy){
+                    Intent editIntent = new Intent(InfoActivity.this, EditResActivity.class);
+                    editIntent.putExtra("pos", position);
+                    InfoActivity.this.startActivity(editIntent);
+                    return true;
+                }
+                Toast.makeText(getApplicationContext(),"This is a read-only page.",Toast.LENGTH_LONG).show();
+                return false;
             case R.id.logout:
                 Intent logoutIntent = new Intent(InfoActivity.this, MainActivity.class);
                 InfoActivity.this.startActivity(logoutIntent);
@@ -64,8 +75,7 @@ public class InfoActivity extends AppCompatActivity {
 
         Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
-        position = bundle.getLong("pos");
-        Restaurant selected = g.res[(int)position];
+        nearBy = bundle.getBoolean("nearBy");
 
         EditText ed1, ed2, ed3, ed4, ed5;
         RatingBar rb = (RatingBar) findViewById(R.id.rating);
@@ -74,13 +84,31 @@ public class InfoActivity extends AppCompatActivity {
         ed3 = (EditText) findViewById(R.id.hoursText);
         ed4 = (EditText) findViewById(R.id.priceText);
         ed5 = (EditText) findViewById(R.id.tagsText);
-        ed1.setText(selected.res_name);
-        ed2.setText(selected.location);
-        String hoursTemp = selected.open + " - " + selected.close;
-        ed3.setText(hoursTemp);
-        String priceTemp = "$" + selected.low + " - $" + selected.high;
-        ed4.setText(priceTemp);
-        ed5.setText(selected.tags);
-        rb.setRating(selected.rating);
+
+        if(nearBy){
+            int pos = bundle.getInt("pos");
+            JSONObject jsonRes = g.nRes.get(pos);
+            try {
+                ed1.setText(jsonRes.getString("name"));
+                ed2.setText(jsonRes.getString("vicinity"));
+                ed3.setText("?");
+                ed4.setText("?");
+                ed5.setText("?");
+                rb.setRating((float)jsonRes.getDouble("rating"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else{
+            position = bundle.getLong("pos");
+            Restaurant selected = g.res[(int)position];
+            ed1.setText(selected.res_name);
+            ed2.setText(selected.location);
+            String hoursTemp = selected.open + " - " + selected.close;
+            ed3.setText(hoursTemp);
+            String priceTemp = "$" + selected.low + " - $" + selected.high;
+            ed4.setText(priceTemp);
+            ed5.setText(selected.tags);
+            rb.setRating(selected.rating);
+        }
     }
 }
