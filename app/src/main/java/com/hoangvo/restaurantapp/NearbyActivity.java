@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -107,44 +106,19 @@ public class NearbyActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(NearbyActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
 
         } else {
-            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-            Location location1 = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-            Location location2 = locationManager.getLastKnownLocation(LocationManager. PASSIVE_PROVIDER);
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             System.out.println("location is null: " + location == null);
-            System.out.println("location is null: " + location1 == null);
-            System.out.println("location is null: " + location2 == null);
-
             if (location != null) {
                 double latti = location.getLatitude();
                 double longi = location.getLongitude();
                 lattitude = String.valueOf(latti);
                 longitude = String.valueOf(longi);
-
-                    new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
-
-
-            } else  if (location1 != null) {
-                double latti = location1.getLatitude();
-                double longi = location1.getLongitude();
-                lattitude = String.valueOf(latti);
-                longitude = String.valueOf(longi);
-
-                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
-
-
-            } else  if (location2 != null) {
-                double latti = location2.getLatitude();
-                double longi = location2.getLongitude();
-                lattitude = String.valueOf(latti);
-                longitude = String.valueOf(longi);
-
-                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
-
+//                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+//                        latti + "," + longi + "&rankby=distance&types=restaurant&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
+                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.974698,-93.232075&rankby=distance&types=restaurant&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
             }else{
-                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.973990,-93.227729&radius=5000&type=restaurant&keyword=cruise&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
+                new GetPlacesTask().execute("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=44.974698,-93.232075&rankby=distance&types=restaurant&key=AIzaSyAR7gF4UakpovhdBGSVckgXEdFX1zC_cm4");
             }
         }
     }
@@ -196,7 +170,6 @@ public class NearbyActivity extends AppCompatActivity {
 
                 while((line = reader.readLine()) != null){
                     buffer.append(line+"\n");
-                    Log.d("Response: ", "> " + line);
                 }
                 return buffer.toString();
             } catch (MalformedURLException e) {
