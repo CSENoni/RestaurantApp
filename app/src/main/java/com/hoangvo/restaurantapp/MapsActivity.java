@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -65,6 +67,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return;
             }
             mMap.setMyLocationEnabled(true);
+
+            Button zoomOut = (Button) findViewById(R.id.zoomOut);
+            Button zoomIn = (Button) findViewById(R.id.zoomIn);
+
+            zoomOut.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    mMap.animateCamera(CameraUpdateFactory.zoomOut());
+                }
+            });
+
+            zoomIn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    mMap.animateCamera(CameraUpdateFactory.zoomIn());
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
