@@ -67,23 +67,30 @@ public class EditActivity extends AppCompatActivity {
     }
 
     ArrayList<Integer> deleted = new ArrayList<Integer>();
+    ArrayList<Restaurant> reslist = new ArrayList<Restaurant>();
+    Globals g;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        Globals g = (Globals)getApplication();
-        String reslist[] = new String[g.limit];
+        g = (Globals)getApplication();
+        for (int i = 0; i < g.res.length; i++)
+            g.res[i].position = i;
+
+        reslist = new ArrayList<Restaurant>();
         for (int i = 0; i < g.limit; i++){
-            reslist[i] = g.res[i].res_name;
+            if(!g.res[i].ignore){
+                reslist.add(g.res[i]);
+            }
         }
 
         final Button add = (Button) findViewById(R.id.add);
         final Button done = (Button) findViewById(R.id.done);
         final Button delete = (Button) findViewById(R.id.delete);
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, reslist);
+        ArrayAdapter adapter = new ArrayAdapter<Restaurant>(this, android.R.layout.simple_list_item_checked, reslist);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
@@ -92,17 +99,14 @@ public class EditActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 CheckedTextView item = (CheckedTextView) view;
                 if(item.isChecked()) {
-                    Toast.makeText(getApplicationContext(), "Checked", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Checked", Toast.LENGTH_LONG).show();
                     if (!deleted.contains((int) id)) {
                         deleted.add((int) id);
-                        Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_LONG).show();
                     }
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "NOT Checked", Toast.LENGTH_LONG).show();
                     if (deleted.contains((int) id)){
                         deleted.remove((int) id);
-                        Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -119,8 +123,7 @@ public class EditActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-                Intent addIntent = new Intent(EditActivity.this, ListActivity.class);
+                Intent addIntent = new Intent(EditActivity.this, AddResActivity.class);
                 EditActivity.this.startActivity(addIntent);
             }
         });
@@ -128,7 +131,11 @@ public class EditActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                ArrayList<Restaurant> rest = new ArrayList<>();
+                for(int i = 0; i < deleted.size(); i++){
+                    Restaurant clicked = reslist.get(deleted.get(i));
+                    g.delRes(clicked.position);
+                }
                 Intent deleteIntent = new Intent(EditActivity.this, ListActivity.class);
                 EditActivity.this.startActivity(deleteIntent);
             }

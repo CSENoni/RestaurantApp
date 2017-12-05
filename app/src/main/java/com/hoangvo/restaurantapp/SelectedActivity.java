@@ -3,6 +3,7 @@ package com.hoangvo.restaurantapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 public class SelectedActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.listmenu, menu);
+        getMenuInflater().inflate(R.menu.selectedmenu, menu);
         return true;
     }
 
@@ -69,11 +71,9 @@ public class SelectedActivity extends AppCompatActivity {
         Button random = (Button) findViewById(R.id.random);
 
         Globals g = (Globals)getApplication();
-        int total = 0;
-        for (int i = 0; i < g.limit; i++){
-            if(!g.res[i].ignore)
-                total++;
-        }
+        for (int i = 0; i < g.res.length; i++)
+            g.res[i].position = i;
+
         reslist = new ArrayList<Restaurant>();
         for (int i = 0; i < g.limit; i++){
             if(!g.res[i].ignore){

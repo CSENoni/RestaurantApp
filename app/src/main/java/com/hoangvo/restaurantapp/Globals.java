@@ -31,10 +31,13 @@ public class Globals extends Application {
         }
         else {
             Restaurant temp;
-            temp = res[limit];
+            temp = res[limit-1];
             res[index] = temp;
-            res[limit] = new Restaurant();
+            res[limit-1] = new Restaurant();
             limit--;
+            for(int i = 0; i < res.length; i++){
+                res[i].position = i;
+            }
         }
     }
 }

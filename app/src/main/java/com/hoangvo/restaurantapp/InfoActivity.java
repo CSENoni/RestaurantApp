@@ -111,7 +111,8 @@ public class InfoActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else{
+        }
+        else{
             position = bundle.getLong("pos");
             Restaurant selected = g.res[(int)position];
             ed1.setText(selected.res_name);

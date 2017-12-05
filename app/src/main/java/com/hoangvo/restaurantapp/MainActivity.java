@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
         temp6.res_name = "Perkins";
         temp6.location = "901 27th Ave S, Minneapolis, MN 55406";
         temp6.open = "6:00am";
-        temp6.close = "12:00am";
-        temp6.tags = "Sit Down\nFamily\nParking Lot\nBreakfest\nBakery";
+        temp6.close = "11:59pm";
+        temp6.tags = "Sit Down\nFamily\nParking Lot\nBreakfast\nBakery";
         temp6.low = "1.00";
         temp6.high = "13.00";
         temp6.rating = 3.7f;

@@ -36,6 +36,7 @@
         <activity android:name=".RandomActivity" />
         <activity android:name=".GroupDisplyActivity" />
         <activity android:name=".EventActivity" />
+        <activity android:name=".AddResActivity" />
         <activity android:name=".EditGroupMembersActivity"></activity>
 
         <!--
