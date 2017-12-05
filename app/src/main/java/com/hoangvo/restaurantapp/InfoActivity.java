@@ -75,7 +75,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        Globals g = (Globals)getApplication();
+        final Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
         nearBy = bundle.getBoolean("nearBy");
 
@@ -89,7 +89,7 @@ public class InfoActivity extends AppCompatActivity {
 
         if(nearBy){
             final int pos = bundle.getInt("pos");
-            JSONObject jsonRes = g.nRes.get(pos);
+            final JSONObject jsonRes = g.nRes.get(pos);
             try {
                 ed1.setText(jsonRes.getString("name"));
                 ed2.setText(jsonRes.getString("vicinity"));
@@ -99,13 +99,44 @@ public class InfoActivity extends AppCompatActivity {
                 rb.setRating((float)jsonRes.getDouble("rating"));
 
                 Button showMap = (Button) findViewById(R.id.show_map);
+                final Button bookmark = (Button) findViewById(R.id.bookmark);
+
                 showMap.setVisibility(View.VISIBLE);
+                if(!g.isRestaurant(jsonRes.getString("name"))){
+                    bookmark.setVisibility(View.VISIBLE);
+                }
+
+                Restaurant[] res = g.res;
+
                 showMap.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent mapIntent = new Intent(InfoActivity.this, MapsActivity.class);
                         mapIntent.putExtra("pos", pos);
                         InfoActivity.this.startActivity(mapIntent);
+                    }
+                });
+
+
+                bookmark.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        Restaurant restaurant = new Restaurant();
+                        try {
+                            restaurant.res_name = jsonRes.getString("name");
+                            restaurant.location = jsonRes.getString("vicinity");
+                            restaurant.open = "";
+                            restaurant.close = "";
+                            restaurant.low = "";
+                            restaurant.high = "";
+                            restaurant.tags = "";
+                            restaurant.rating = (float)jsonRes.getDouble("rating");
+                            if(g.addRes(restaurant)){
+                                bookmark.setVisibility(View.GONE);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
             } catch (JSONException e) {

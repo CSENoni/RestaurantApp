@@ -15,13 +15,15 @@ public class Globals extends Application {
     public Groups[] gro = new Groups[5];
     public GroupEvent[] groEvt = new GroupEvent[5];
 
-    public void addRes(Restaurant r){
+    public boolean addRes(Restaurant r){
         if (limit == res.length){
             Toast.makeText(getApplicationContext(),"Cannot add anymore restaurants, list is full.",Toast.LENGTH_LONG).show();
+            return false;
         }
         else{
             res[limit] = r;
             limit++;
+            return true;
         }
     }
 
@@ -39,5 +41,15 @@ public class Globals extends Application {
                 res[i].position = i;
             }
         }
+    }
+
+    // This is only for new added restaurant on a fly
+    public boolean isRestaurant(String name){
+        for(int i = 0; i < res.length; i++){
+            if(res[i].res_name.equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 }
