@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -62,9 +63,10 @@ public class EventActivity extends AppCompatActivity {
 
         Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
-        long i = bundle.getLong("gID");
+        final long i = bundle.getLong("gid");
+        long j = bundle.getLong("gID");
         final GroupEvent clickedOn = g.groEvt[(int)i];
-        final Groups clickedOnEvent = g.gro[(int)i];
+        final Groups clickedOnEvent = g.gro[(int)j];
 
         final EditText name, area, date_time,  priceHigh, priceLow, tags;
 
@@ -85,12 +87,14 @@ public class EventActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickedOnEvent.name = name.getText().toString();
+                clickedOnEvent.events[(int)i] = name.getText().toString();
                 clickedOn.name = name.getText().toString();
                 clickedOn.area = area.getText().toString();
                 clickedOn.date = date_time.getText().toString();
                 clickedOn.priceHigh = priceHigh.getText().toString();
                 clickedOn.priceLow = priceLow.getText().toString();
+
+                Toast.makeText(getApplicationContext(), "EVENT SAVED!! ", Toast.LENGTH_SHORT).show();
 
             }
         });

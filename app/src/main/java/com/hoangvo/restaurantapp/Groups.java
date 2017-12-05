@@ -11,8 +11,8 @@ public class Groups {
 
     public Groups() {
        name = "";
-       members = new String[5];
-       events = new String[3];
+       members = new String[10];
+       events = new String[10];
     }
 
 

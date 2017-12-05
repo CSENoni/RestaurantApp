@@ -3,9 +3,6 @@ package com.hoangvo.restaurantapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
             for (int i = 0; i < g.gro.length; i++) {
                 g.gro[i] = new Groups();
-                g.gro[i].name = "Empty Group";
+                g.gro[i].name = "Add Group";
                 for (int j = 0; j < g.gro[i].members.length; j++){
                     g.gro[i].members[j] = "";
                 }
