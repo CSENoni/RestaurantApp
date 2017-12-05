@@ -92,15 +92,19 @@ public class EditActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 CheckedTextView item = (CheckedTextView) view;
                 if(item.isChecked()) {
-                    Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Checked", Toast.LENGTH_LONG).show();
                     if (!deleted.contains((int) id)) {
                         deleted.add((int) id);
                         Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_LONG).show();
                     }
                 }
-                else
-                    Toast.makeText(getApplicationContext(),"NOT Checked",Toast.LENGTH_LONG).show();
-
+                else {
+                    Toast.makeText(getApplicationContext(), "NOT Checked", Toast.LENGTH_LONG).show();
+                    if (deleted.contains((int) id)){
+                        deleted.remove((int) id);
+                        Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
