@@ -71,7 +71,7 @@ public class GroupDisplyActivity extends AppCompatActivity {
 
         Globals g = (Globals)getApplication();
         Bundle bundle = getIntent().getExtras();
-        long i = bundle.getLong("gID");
+        final long i = bundle.getLong("gID");
         final Groups clickedOn = g.gro[(int)i];
         int count = g.gro[(int)i].members.length;
 
@@ -96,13 +96,23 @@ public class GroupDisplyActivity extends AppCompatActivity {
             }
         }
 
+        Button btnEditGroupList = (Button) findViewById(R.id.button3);
+        btnEditGroupList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editGroupMembers = new Intent(GroupDisplyActivity.this, EditGroupMembersActivity.class);
+                editGroupMembers.putExtra("gID", i);
+                GroupDisplyActivity.this.startActivity(editGroupMembers);
+            }
+        });
+
 
         final ArrayList<String> arrayList = new ArrayList<>(Arrays.asList(members_names));
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, arrayList);
         listViewMembers.setAdapter(adapter);
 
-        final EditText mName = (EditText) findViewById(R.id.editTextMemberName);
-        Button btnAddMem = (Button) findViewById(R.id.button3);
+        //final EditText mName = (EditText) findViewById(R.id.editTextMemberName);
+       /* Button btnAddMem = (Button) findViewById(R.id.button3);
         btnAddMem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,6 +122,7 @@ public class GroupDisplyActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Name Added To List", Toast.LENGTH_SHORT).show();
             }
         });
+        */
 
         ListView listView1 = (ListView) findViewById(R.id.listView2);
         int totalE = 0;
@@ -134,12 +145,12 @@ public class GroupDisplyActivity extends AppCompatActivity {
         final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, arrayList1);
         listView1.setAdapter(adapter1);
 
-        final EditText eName = (EditText) findViewById(R.id.editTextEventName);
+        //final EditText eName = (EditText) findViewById(R.id.editTextEventName);
         Button btnAddEvent = (Button) findViewById(R.id.button5);
         btnAddEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String addEvent = eName.getText().toString();
+                String addEvent = "New Event ";
                 arrayList1.add(addEvent);
                 adapter1.notifyDataSetChanged();
                 Toast.makeText(getBaseContext(), "Event Added To List", Toast.LENGTH_SHORT).show();
@@ -171,17 +182,18 @@ public class GroupDisplyActivity extends AppCompatActivity {
 
                 if (position == 0) {
                     Intent myintent = new Intent(view.getContext(), EventActivity.class);
-                    myintent.putExtra("gID",id);
+                    myintent.putExtra("gid",id);
+                    myintent.putExtra("gID", i);
                     startActivityForResult(myintent, 0);
                 }
                 if (position == 1) {
                     Intent myintent = new Intent(view.getContext(), EventActivity.class);
-                    myintent.putExtra("gID", id);
+                    myintent.putExtra("gid", id);
                     startActivityForResult(myintent, 1);
                 }
                 if (position == 2) {
                     Intent myintent = new Intent(view.getContext(), EventActivity.class);
-                    myintent.putExtra("gID",id);
+                    myintent.putExtra("gid",id);
                     startActivityForResult(myintent, 2);
                 }
             }
