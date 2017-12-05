@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void initializeRes (){
         Globals g = (Globals)getApplication();
         Restaurant temp = new Restaurant();
+
         temp.res_name = "McDonalds";
         temp.location = "407 15th Ave SE, Minneapolis, MN 55414";
         temp.open = "5:00am";
@@ -81,38 +82,90 @@ public class MainActivity extends AppCompatActivity {
         temp.high = "15.00";
         g.addRes(temp);
 
+        Restaurant temp1 = new Restaurant();
 
-        temp = new Restaurant();
-        temp.res_name = "Chipotle";
-        temp.location = "800 Washington Ave SE, Minneapolis, MN 55414";
-        temp.open = "10:45am";
-        temp.close = "10:00pm";
-        temp.tags = "Mexican\nFast Food\nBurritos";
-        temp.low = "5.00";
-        temp.high = "20.00";
-        temp.rating = 4;
-        g.addRes(temp);
+        temp1.res_name = "Chipotle";
+        temp1.location = "800 Washington Ave SE, Minneapolis, MN 55414";
+        temp1.open = "10:45am";
+        temp1.close = "10:00pm";
+        temp1.tags = "Mexican\nFast Food\nBurritos";
+        temp1.low = "5.00";
+        temp1.high = "20.00";
+        temp1.rating = 4;
+        g.addRes(temp1);
 
-        temp = new Restaurant();
-        temp.res_name = "Applebee's";
-        temp.location = "615 Washington Ave SE, Minneapolis, MN 55414";
-        temp.open = "11:00am";
-        temp.close = "11:59pm";
-        temp.tags = "American\nBar & Grill\nSit Down\nBurgers\nSteak\nPasta";
-        temp.low = "5.00";
-        temp.high = "30.00";
-        temp.rating = 4.5f;
-        g.addRes(temp);
+        Restaurant temp2 = new Restaurant();
 
-        temp = new Restaurant();
-        temp.res_name = "Teahouse";
-        temp.location = "2425 University Ave SE, Minneapolis, MN 55414";
-        temp.open = "11:00am";
-        temp.close = "9:30pm";
-        temp.tags = "Chinese\nSit Down\nLo Mein\nChow Mein\nDim Sum\n";
-        temp.low = "5.00";
-        temp.high = "20.00";
-        temp.rating = 4;
-        g.addRes(temp);
+        temp2.res_name = "Applebee's";
+        temp2.location = "615 Washington Ave SE, Minneapolis, MN 55414";
+        temp2.open = "11:00am";
+        temp2.close = "11:59pm";
+        temp2.tags = "American\nBar & Grill\nSit Down\nBurgers\nSteak\nPasta";
+        temp2.low = "5.00";
+        temp2.high = "30.00";
+        temp2.rating = 4.5f;
+        g.addRes(temp2);
+
+        Restaurant temp3 = new Restaurant();
+
+        temp3.res_name = "Teahouse";
+        temp3.location = "2425 University Ave SE, Minneapolis, MN 55414";
+        temp3.open = "11:00am";
+        temp3.close = "9:30pm";
+        temp3.tags = "Chinese\nSit Down\nLo Mein\nChow Mein\nDim Sum\n";
+        temp3.low = "5.00";
+        temp3.high = "20.00";
+        temp3.rating = 4;
+        g.addRes(temp3);
+
+        Restaurant temp4 = new Restaurant();
+
+        temp4.res_name = "Noodles & Company";
+        temp4.location = "820 Washington Ave SE, Minneapolis, MN 55414";
+        temp4.open = "11:00am";
+        temp4.close = "10:00pm";
+        temp4.tags = "Fast Food\nNoodles";
+        temp4.low = "5.00";
+        temp4.high = "10.00";
+        temp4.rating = 3;
+        g.addRes(temp4);
+
+        Restaurant temp5 = new Restaurant();
+
+        temp5.res_name = "Raising Cane's";
+        temp5.location = "825 Washington Ave SE, Minneapolis, MN 55414";
+        temp5.open = "10:00am";
+        temp5.close = "11:00pm";
+        temp5.tags = "American\nFast Food\nChicken Fingers";
+        temp5.low = "5.00";
+        temp5.high = "12.00";
+        temp5.rating = 5;
+        g.addRes(temp5);
+
+        Restaurant temp6 = new Restaurant();
+
+        temp6.res_name = "Perkins";
+        temp6.location = "901 27th Ave S, Minneapolis, MN 55406";
+        temp6.open = "6:00am";
+        temp6.close = "12:00am";
+        temp6.tags = "Sit Down\nFamily\nParking Lot\nBreakfest\nBakery";
+        temp6.low = "1.00";
+        temp6.high = "13.00";
+        temp6.rating = 3.7f;
+        g.addRes(temp6);
+
+        Restaurant temp7 = new Restaurant();
+
+        temp7.res_name = "Restaurant Alma";
+        temp7.location = "528 University Ave SE, Minneapolis, MN 55414";
+        temp7.open = "7:00am";
+        temp7.close = "10:00pm";
+        temp7.tags = "Fine Dining\nHealthy Options";
+        temp7.low = "5.00";
+        temp7.high = "52.00";
+        temp7.rating = 4.6f;
+        g.addRes(temp7);
+
+
     }
 }
