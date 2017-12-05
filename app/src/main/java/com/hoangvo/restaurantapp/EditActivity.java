@@ -11,7 +11,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -64,6 +66,8 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
+    ArrayList<Integer> deleted = new ArrayList<Integer>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +79,6 @@ public class EditActivity extends AppCompatActivity {
             reslist[i] = g.res[i].res_name;
         }
 
-        ArrayList<Integer> deleted = new ArrayList<Integer>();
-
         final Button add = (Button) findViewById(R.id.add);
         final Button done = (Button) findViewById(R.id.done);
         final Button delete = (Button) findViewById(R.id.delete);
@@ -85,15 +87,26 @@ public class EditActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
         listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-        /*listView.setOnItemClickListener(new OnItemClickListener() {
+        listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-
-                Intent infoIntent = new Intent(EditActivity.this, InfoActivity.class);
-                infoIntent.putExtra("pos", id);
-                EditActivity.this.startActivity(infoIntent);
+                CheckedTextView item = (CheckedTextView) view;
+                if(item.isChecked()) {
+                    Toast.makeText(getApplicationContext(), "Checked", Toast.LENGTH_LONG).show();
+                    if (!deleted.contains((int) id)) {
+                        deleted.add((int) id);
+                        Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "NOT Checked", Toast.LENGTH_LONG).show();
+                    if (deleted.contains((int) id)){
+                        deleted.remove((int) id);
+                        Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
-        });*/
+        });
 
         done.setOnClickListener(new View.OnClickListener(){
             @Override

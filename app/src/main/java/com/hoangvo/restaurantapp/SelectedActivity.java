@@ -70,12 +70,12 @@ public class SelectedActivity extends AppCompatActivity {
 
         Globals g = (Globals)getApplication();
         int total = 0;
-        for (int i = 0; i < g.res.length; i++){
+        for (int i = 0; i < g.limit; i++){
             if(!g.res[i].ignore)
                 total++;
         }
         reslist = new ArrayList<Restaurant>();
-        for (int i = 0; i < g.res.length; i++){
+        for (int i = 0; i < g.limit; i++){
             if(!g.res[i].ignore){
                 reslist.add(g.res[i]);
             }

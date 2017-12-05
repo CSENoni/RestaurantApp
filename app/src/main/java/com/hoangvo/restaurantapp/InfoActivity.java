@@ -93,9 +93,9 @@ public class InfoActivity extends AppCompatActivity {
             try {
                 ed1.setText(jsonRes.getString("name"));
                 ed2.setText(jsonRes.getString("vicinity"));
-                ed3.setText("?");
-                ed4.setText("?");
-                ed5.setText("?");
+                ed3.setVisibility(View.GONE);
+                ed4.setVisibility(View.GONE);
+                ed5.setVisibility(View.GONE);
                 rb.setRating((float)jsonRes.getDouble("rating"));
 
                 Button showMap = (Button) findViewById(R.id.show_map);
