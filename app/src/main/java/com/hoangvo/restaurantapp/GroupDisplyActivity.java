@@ -172,6 +172,8 @@ public class GroupDisplyActivity extends AppCompatActivity {
                 for (int j = 0; j < adpt1Length; j++) {
                     clickedOn.events[j] = adapter1.getItem(j);
                 }
+                Intent saveintent = new Intent(GroupDisplyActivity.this, GroupActivity.class);
+                GroupDisplyActivity.this.startActivity(saveintent);
 
             }
         });
