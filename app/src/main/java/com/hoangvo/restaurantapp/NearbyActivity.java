@@ -68,7 +68,7 @@ public class NearbyActivity extends AppCompatActivity {
                 NearbyActivity.this.startActivity(nearbyIntent);
                 return true;
             case R.id.groups:
-                Intent groupsIntent = new Intent(NearbyActivity.this, NearbyActivity.class);
+                Intent groupsIntent = new Intent(NearbyActivity.this, GroupActivity.class);
                 NearbyActivity.this.startActivity(groupsIntent);
                 return true;
             case R.id.help:

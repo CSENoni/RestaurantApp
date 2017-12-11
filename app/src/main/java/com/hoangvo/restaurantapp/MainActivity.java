@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
                 g.res[i].position = i;
             }
             initializeRes();
-
+            initializeUser();
 
             for (int i = 0; i < g.gro.length; i++) {
                 g.gro[i] = new Groups();
@@ -64,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(loginIntent);
             }
         });
+    }
+
+    public void initializeUser() {
+        Globals g = (Globals) getApplication();
+        g.addUser("superman@gmail.com", "Superman", "12345");
+        g.addUser("batman@gmail.com", "Batman", "54321");
+        g.addUser("hulk@gmail.com", "Hulk", "11111");
     }
 
     public void initializeRes (){

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class EditActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.listmenu, menu);
+        getMenuInflater().inflate(R.menu.titlemenu, menu);
         return true;
     }
 

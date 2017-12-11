@@ -6,6 +6,8 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Globals extends Application {
     public boolean already = false;
@@ -14,6 +16,7 @@ public class Globals extends Application {
     public ArrayList<JSONObject> nRes = new ArrayList<JSONObject>();
     public Groups[] gro = new Groups[5];
     public GroupEvent[] groEvt = new GroupEvent[5];
+    public Map<String, String[]> users = new HashMap();
 
     public boolean addRes(Restaurant r){
         if (limit == res.length){
@@ -51,5 +54,14 @@ public class Globals extends Application {
             }
         }
         return false;
+    }
+
+    public void addUser(String email, String name, String password){
+        String[] detail= {password, email};
+        if(users.containsKey(name)){
+            Toast.makeText(getApplicationContext(),"This username is used. Please choose another name.",Toast.LENGTH_LONG).show();
+        }else{
+            users.put(name, detail);
+        }
     }
 }
