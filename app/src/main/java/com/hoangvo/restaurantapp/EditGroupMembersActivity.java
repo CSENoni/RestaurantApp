@@ -1,7 +1,8 @@
 package com.hoangvo.restaurantapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -59,13 +60,14 @@ public class EditGroupMembersActivity extends AppCompatActivity {
             }
         }
 
-        names = new ArrayList<>(Arrays.asList(members_names));
+        names = new ArrayList<String>(Arrays.asList(members_names));
+        //names = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, names);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View view, int pos, long id) {
+            public void onItemClick(AdapterView<?> arg0, View v, int pos, long id) {
 
                 nameTxt.setText(names.get(pos));
             }
@@ -115,7 +117,8 @@ public class EditGroupMembersActivity extends AppCompatActivity {
             adapter.notifyDataSetChanged();
             nameTxt.setText("");
 
-            clickedOn.members[adapter.getCount()] = name;
+            int j = adapter.getCount();
+            clickedOn.members[j - 1] = name;
 
             Toast.makeText(getApplicationContext(), "Added " + name, Toast.LENGTH_SHORT).show();
         }
@@ -151,6 +154,11 @@ public class EditGroupMembersActivity extends AppCompatActivity {
     //DELETE
     private void delete() {
         int pos = lv.getCheckedItemPosition();
+        Globals g = (Globals)getApplication();
+        Bundle bundle = getIntent().getExtras();
+        final long i = bundle.getLong("gID");
+        final Groups clickedOn = g.gro[(int)i];
+        clickedOn.members[pos] = "";
 
         if(pos > -1) {
             //remove
@@ -164,11 +172,29 @@ public class EditGroupMembersActivity extends AppCompatActivity {
         else {
             Toast.makeText(getApplicationContext(), "!! Nothing to Delete", Toast.LENGTH_SHORT).show();
         }
+
+        int j = adapter.getCount();
+        String[] delete_names = new String[j];
+        int current = 0;
+        for(int k = 0; k < clickedOn.members.length; k++){
+            if(clickedOn.members[k] != ""){
+                delete_names[current] = clickedOn.members[k];
+                current++;
+            }
+        }
+
+        for(int k = 0; k < current; k++) {
+            clickedOn.members[k] = names.get(k);
+        }
     }
 
     //CLEAR
     private void clear() {
-        adapter.clear();
+        Bundle bundle = getIntent().getExtras();
+        final long i = bundle.getLong("gID");
+        Intent doneIntent = new Intent(EditGroupMembersActivity.this, GroupDisplyActivity.class);
+        doneIntent.putExtra("gID", i);
+        EditGroupMembersActivity.this.startActivity(doneIntent);
     }
 
 
